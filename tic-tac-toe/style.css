@@ -1,0 +1,146 @@
+/* Updated CSS with additional animations */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #000428, #004e92); /* Dark blue gradient background */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.container {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    padding: 30px;
+    background-color: #f7f7f7;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); /* Glowing effect around container */
+    width: fit-content;
+    margin: auto;
+    animation: fadeIn 1s ease-in-out, containerPulse 2s infinite; /* Add pulsing animation */
+    transform-origin: top center;
+    animation-delay: 0.3s;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px; /* Adjusted width */
+    height: 300px; /* Ensure the board is square */
+    margin: 30px auto;
+    border: 3px solid #fff;
+    border-radius: 15px;
+    background-color: #004e92; /* Dark blue background */
+    overflow: hidden; /* Ensure nothing spills outside */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Glow effect */
+    animation: boardGlow 2s infinite alternate; /* Add board glow animation */
+}
+
+.cell {
+    width: 33.33%; /* Adjust to fit three cells per row */
+    height: 33.33%; /* Adjust to fit three cells per column */
+    border: 2px solid #ff512f; /* Use the vibrant gradient color */
+    box-sizing: border-box;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ff512f, #dd2476); /* Vibrant gradient background */
+    animation: cellBounce 1s ease; /* Add cell bounce effect on load */
+}
+
+.cell:hover {
+    background-color: #ff512f; /* Match hover color with button */
+    color: #fff;
+    animation: hoverPulse 0.5s ease-in-out infinite, hoverShadow 0.5s ease-in-out;
+}
+
+#status {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ff512f; /* Same color as small boxes */
+    animation: fadeIn 1s ease-in-out, textGlow 1.5s infinite alternate;
+    letter-spacing: 2px;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#reset {
+    font-size: 20px;
+    padding: 15px 30px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ff512f, #dd2476); /* Vibrant gradient */
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* More rounded for flair */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    animation: fadeIn 1s ease-in-out, buttonLegendary 2s infinite, buttonPulse 1.5s infinite;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#reset:hover {
+    background-color: #dd2476; /* Reverse the gradient on hover */
+    transform: translateY(-5px);
+    animation: buttonBounce 0.6s ease;
+}
+
+/* Additional Animations */
+@keyframes containerPulse {
+    0% { box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.7); }
+    100% { box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); }
+}
+
+@keyframes boardGlow {
+    0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+    100% { box-shadow: 0 0 30px rgba(255, 255, 255, 0.8); }
+}
+
+@keyframes cellBounce {
+    from { transform: scale(0.8); opacity: 0.8; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes hoverPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes hoverShadow {
+    from { box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); }
+    to { box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); }
+}
+
+@keyframes buttonLegendary {
+    0% { transform: scale(1) rotate(0deg); background: linear-gradient(135deg, #ff512f, #dd2476); }
+    25% { transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, #dd2476, #ff512f); }
+    50% { transform: scale(1.2) rotate(-5deg); background: linear-gradient(135deg, #ff512f, #dd2476); }
+    75% { transform: scale(1.1) rotate(5deg); background: linear-gradient(135deg, #dd2476, #ff512f); }
+    100% { transform: scale(1) rotate(0deg); background: linear-gradient(135deg, #ff512f, #dd2476); }
+}
+
+@keyframes buttonPulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes buttonBounce {
+    0% { transform: scale(1.2) translateY(0); }
+    50% { transform: scale(1.2) translateY(-10px); }
+    100% { transform: scale(1.2) translateY(0); }
+}
+
+@keyframes textGlow {
+    0% { text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); }
+    100% { text-shadow: 0px 4px 8px rgba(255, 255, 255, 0.6); }
+}
